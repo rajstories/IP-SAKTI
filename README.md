@@ -33,3 +33,6 @@ npm test
 npm run build
 ```
 
+## Deploy on Vercel
+
+Import the repository with its root directory left at the repository root. The committed `vercel.json` installs and builds the Vite app from `prototype/` and publishes `prototype/dist`.
