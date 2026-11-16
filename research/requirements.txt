@@ -1,0 +1,6 @@
+transformers==4.57.6
+torch>=2.2
+numpy>=1.26
+pypdf>=5.0
+requests>=2.31
+safetensors>=0.4

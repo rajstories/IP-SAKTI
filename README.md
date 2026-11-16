@@ -14,8 +14,13 @@ An evidence-led prototype for exploring intellectual-property and regulatory con
 - Editable professional-review summary with copy and download
 - English and Hindi interface
 - Device-local saved cases with rename and delete
+- Research workspace with a study protocol and six proposed method descriptions
+- Illustrative complete/incomplete case explorer
+- Validated import/export of recorded experiment logs and reviewer-score summaries
 
-The prototype uses deterministic sample data and does not run a live language model or claim legal verification.
+The formulation wizard uses curated sample data. The research workspace now includes a real NBA + Ayush-document retrieval pilot: BM25, MiniLM dense retrieval, hybrid fusion and local FLAN-T5 generation. Measured retrieval scores are displayed with their raw runs and provisional labels; generated-answer accuracy has not been established. See [the executed pilot](research/README.md) and [results](research/RESULTS.md). Imported external logs remain separate from the recorded pilot. Research content is currently English, with an explicit fallback notice when Hindi is selected.
+
+The comparison protocol and staged implementation plan are in [RESEARCH-STUDY.md](RESEARCH-STUDY.md).
 
 ## Run locally
 

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "patents-act",
+    "title": "The Patents Act, 1970 \u2014 incorporating amendments through 1 August 2024",
+    "issuer": "Government of India / IP India",
+    "url": "https://www.ipindia.gov.in/storage/uploads/docs-operator/73b5bf10-b04e-4f45-abef-87ff117315dc.pdf",
+    "versionLabel": "Amendments through 1 August 2024, per official resource listing",
+    "scope": "Indian patent law",
+    "pages": "all",
+    "reason": "403 Client Error: Forbidden for url: https://www.ipindia.gov.in/storage/uploads/docs-operator/73b5bf10-b04e-4f45-abef-87ff117315dc.pdf"
+  },
+  {
+    "id": "ayush-guidelines",
+    "title": "Guidelines for Examination of Ayush Related Inventions, 2025",
+    "issuer": "Office of the Controller General of Patents, Designs and Trade Marks",
+    "url": "https://ipindia.gov.in/frontend/pdf/patents/guidelines/Guidelines%20for%20Examination%20of%20Ayush%20Related%20Inventions.pdf",
+    "versionLabel": "2025, as printed on cover",
+    "scope": "Indian Ayush patent examination guidance",
+    "pages": "all",
+    "reason": "403 Client Error: Forbidden for url: https://ipindia.gov.in/frontend/pdf/patents/guidelines/Guidelines%20for%20Examination%20of%20Ayush%20Related%20Inventions.pdf"
+  }
+]

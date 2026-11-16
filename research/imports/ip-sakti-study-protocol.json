@@ -1,0 +1,126 @@
+{
+  "title": "IP-SAKTI Sahayak — formulation-aware retrieval study",
+  "status": "Planned study; no experimental findings included",
+  "scope": "India; English pilot",
+  "question": "Does source-linked clarification improve supported resolution and reduce incorrect applicability at comparable answer coverage?",
+  "coreMethods": [
+    {
+      "id": "dense",
+      "code": "B1",
+      "name": "Dense RAG",
+      "kind": "Core baseline",
+      "question": "Can semantic similarity retrieve the evidence this case needs?",
+      "stages": [
+        "Supplied facts",
+        "Transformer embeddings",
+        "Top-k passages",
+        "Cited generation"
+      ],
+      "change": "Semantic retrieval only. No interactive clarification stage.",
+      "limit": "A relevant passage does not establish that its conditions apply to the case.",
+      "reference": "https://aclanthology.org/2024.naacl-long.389/"
+    },
+    {
+      "id": "hybrid",
+      "code": "B2",
+      "name": "Hybrid RAG",
+      "kind": "Core baseline",
+      "question": "Do exact legal terms and semantic matches complement each other?",
+      "stages": [
+        "Supplied facts",
+        "BM25 + embeddings",
+        "Fusion + reranking",
+        "Cited generation"
+      ],
+      "change": "Replace dense-only retrieval with lexical and semantic retrieval. Hold the generator and evidence budget fixed.",
+      "limit": "Better retrieval cannot supply facts the user has not provided.",
+      "reference": "https://link.springer.com/article/10.1007/s10506-026-09537-2"
+    },
+    {
+      "id": "clarified",
+      "code": "P1",
+      "name": "Hybrid + clarification",
+      "kind": "Proposed comparison",
+      "question": "Does collecting the missing fact improve a supported, case-specific answer?",
+      "stages": [
+        "Supplied facts",
+        "Source-linked questions",
+        "Same hybrid retrieval",
+        "Same cited generation"
+      ],
+      "change": "Add a bounded clarification stage to B2. Unknown answers remain unknown.",
+      "limit": "Use a complete-facts control; extra information is not evidence of a better language model.",
+      "reference": "https://aclanthology.org/2025.findings-naacl.306/"
+    }
+  ],
+  "extensions": [
+    {
+      "id": "graph",
+      "code": "E1",
+      "name": "Graph-assisted RAG",
+      "kind": "Study extension",
+      "question": "Does traversing source relationships help with multi-source questions?",
+      "stages": [
+        "Case entities",
+        "Source-linked graph",
+        "Bounded traversal",
+        "Passages + generation"
+      ],
+      "change": "Test graph-assisted evidence selection on cases that require linked provisions. Record the cost and review of graph construction.",
+      "limit": "A curated condition graph is not automatically Microsoft GraphRAG. A graph database is storage, not an additional baseline.",
+      "reference": "https://microsoft.github.io/graphrag/query/overview/"
+    },
+    {
+      "id": "tree",
+      "code": "E2",
+      "name": "Document-tree retrieval",
+      "kind": "Study extension",
+      "question": "Does keeping a provision with its parent section preserve important context?",
+      "stages": [
+        "Case question",
+        "Document hierarchy",
+        "Section selection",
+        "Passages + generation"
+      ],
+      "change": "Evaluate hierarchy-based retrieval on definition, exception and cross-reference cases. Specify the actual traversal implementation.",
+      "limit": "“Vectorless” describes a family, not one algorithm. BM25 is also vectorless; a section browser alone is not a RAG experiment.",
+      "reference": "https://github.com/VectifyAI/PageIndex"
+    },
+    {
+      "id": "agentic",
+      "code": "E3",
+      "name": "Agentic retrieval",
+      "kind": "Study extension",
+      "question": "Does choosing another search step help enough to justify its cost?",
+      "stages": [
+        "Case question",
+        "Plan / select tool",
+        "Budgeted search loop",
+        "Evidence-led response"
+      ],
+      "change": "Allow a controller to choose retrieval actions within a fixed call and token budget; compare it with a fixed workflow.",
+      "limit": "Agentic control can use dense, hybrid or graph retrieval. Count every model call and include failed or exhausted runs.",
+      "reference": "https://arxiv.org/abs/2501.09136"
+    }
+  ],
+  "pilotTarget": {
+    "developmentFamilies": 5,
+    "pairedEvaluationFamilies": 10,
+    "variantsPerFamily": 2,
+    "unresolvedCases": 5
+  },
+  "controls": [
+    "Same corpus and generator checkpoint",
+    "Same evidence-token budget and answer prompt",
+    "Complete-facts baseline control",
+    "Both baselines may abstain",
+    "No test answers or hidden facts in the retrieval index",
+    "Frozen family-separated evaluation set"
+  ],
+  "laterExperiments": [
+    "Generic versus source-linked clarification at the same turn budget",
+    "Graph traversal for cross-provision cases",
+    "Document hierarchy for definitions and exceptions",
+    "Separate support and applicability ablations"
+  ]
+}

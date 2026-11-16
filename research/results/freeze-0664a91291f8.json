@@ -1,0 +1,30 @@
+{
+  "benchmarkHash": "0664a91291f8e243bbffbece9f5d545557bb3a3cd62c50b8275d1ce5069847b8",
+  "frozenAt": "2026-11-16T14:23:18.512840+00:00",
+  "config": {
+    "chunkTokens": 180,
+    "overlapTokens": 30,
+    "bm25K1": 1.5,
+    "bm25B": 0.75,
+    "rrfConstant": 60,
+    "rrfDepth": 50,
+    "reranker": null,
+    "retrievalK": 5,
+    "generatorInputTokens": 512,
+    "contextTokensPerPassage": 120,
+    "generationPassages": 3,
+    "maxNewTokens": 96,
+    "doSample": false,
+    "device": "cpu",
+    "threads": 4
+  },
+  "modelLock": {
+    "sentence-transformers/all-MiniLM-L6-v2": {
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+    },
+    "google/flan-t5-small": {
+      "revision": "0fc9ddf78a1e988dac52e2dac162b0ede4fd74ab"
+    }
+  },
+  "corpusHash": "25c53390ad01384e1b96964a3a4555e5ad35a416655b1391d8f928d7655a8860"
+}
